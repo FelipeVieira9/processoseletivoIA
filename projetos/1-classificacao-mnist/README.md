@@ -85,28 +85,45 @@ projetos/1-classificacao-mnist/
 
 ## 📝 Relatório do Candidato
 
-👤 **Nome Completo:**
+👤 **Nome Completo:** Felipe Vieira de Oliveira
 
 ### 1️⃣ Resumo da Arquitetura do Modelo
 
-Descreva, em palavras, a arquitetura da CNN implementada em `train_model.py` (número de blocos convolucionais, uso de batch normalization/dropout, estratégia de validação/early stopping).
+A arquitetura da CNN foi construída utilizando 3 blocos convolucionais, onde cada bloco é composto por convolução, BatchNormalization para estabilização do aprendizado, e MaxPooling2D para redução de dimensionalidade. Antes da camada de saída temos uma camada de Dropout como técnica para evitar overfitting. A estratégia de validação utilizada foi o early stopping, que aguarda algumas épocas sem melhora do algoritmo para interromper a busca de melhores parâmetros.
 
 ### 2️⃣ Bibliotecas Utilizadas
 
-Liste as principais bibliotecas utilizadas, preferencialmente com suas versões.
+Foram utilizadas as bibliotecas recomendadas do projeto, que foram o tensorflow (v2.12), para mexer com CNN, numpy, para manipulação de arrays. Também foi utilizado scikit-learn (1.9.0), para fazer a divisão dos dados, criando o conjunto de validação.
 
 ### 3️⃣ Técnica de Otimização do Modelo
 
-Explique qual técnica foi utilizada para otimizar o modelo em `optimize_model.py`.
+Foi utilizada a técnica 'Dynamic Range Quantization', que converte os pesos do modelo de ponto flutuante float para números inteiros int. Isso reduz o tamanho do modelo e o uso de memória, com pouca perda de acurácia, como mostra o próximo tópico.
 
 ### 4️⃣ Resultados Obtidos
 
 Informe a acurácia de validação obtida e o tamanho dos arquivos `model.h5` e `model.tflite`.
 
+Para o model.h5 a acurácia foi de aproximadamente 0.9871, com o tamanho do arquivo de 1374KB
+
+Para o modelo quantizado a acurácia foi de aproximadamente 0.9862, com o tamanho do arquivo de 123KB
+
 ### 5️⃣ Comentários Adicionais (Opcional)
 
-Dificuldades encontradas, decisões técnicas importantes, limitações do modelo, aprendizados durante o desafio.
+Observando os resultados obtidos, percebe-se a importância da quantização para dispositivos Edge.
+A técnica reduziu grandemente o espaço utilizado, comprimindo o arquivo em mais de 10 vezes, enquanto a acurácia sofreu uma redução leve, de 0.9871 para 0.9862. Isso comprova a a importância e necessidade dessas otimizações para permitir que esses modelos rodem de forma eficiente em dispositivos carentes de armazenamento e processamento.
 
 ### 6️⃣ Exemplo de Inferência
 
-Cole a saída do terminal ao rodar `run_inference.py` (predito vs. real para as 5+ amostras), e comente brevemente se houve algum caso interessante (acerto ou erro) entre as amostras testadas.
+Fazendo a prova real com 5 amostra, tivemos:
+
+Amostra 1: predito=7 | real=7
+
+Amostra 2: predito=2 | real=2
+
+Amostra 3: predito=1 | real=1
+
+Amostra 4: predito=0 | real=0
+
+Amostra 5: predito=4 | real=4
+
+Em 5 amostras não foram identificados erros, mas espera-se que ocorra erro em alguma amostra futura, considerando a acurácia dos dois modelos
