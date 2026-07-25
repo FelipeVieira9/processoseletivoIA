@@ -93,7 +93,7 @@ A arquitetura da CNN foi construída utilizando 3 blocos convolucionais, onde ca
 
 ### 2️⃣ Bibliotecas Utilizadas
 
-Foram utilizadas as bibliotecas recomendadas do projeto, que foram o tensorflow (v2.12), para mexer com CNN, numpy, para manipulação de arrays. Também foi utilizado scikit-learn (1.9.0), para fazer a divisão dos dados, criando o conjunto de validação.
+Foram utilizadas as bibliotecas recomendadas do projeto, que foram o tensorflow (v2.12), para mexer com CNN, numpy, para manipulação de arrays. Também foi utilizado scikit-learn, para fazer a divisão dos dados, criando o conjunto de validação.
 
 ### 3️⃣ Técnica de Otimização do Modelo
 
@@ -110,7 +110,7 @@ Para o modelo quantizado a acurácia foi de aproximadamente 0.9873, com o tamanh
 ### 5️⃣ Comentários Adicionais (Opcional)
 
 Observando os resultados obtidos, percebe-se a importância da quantização para dispositivos Edge.
-A técnica reduziu grandemente o espaço utilizado, comprimindo o arquivo em mais de 10 vezes, enquanto a acurácia sofreu um redução leve, de 0.9871 para 0.9862. Isso comprova a a importância e necessidade dessas otimizações para permitir que esses modelos rodem de forma eficiente em dispositivos carentes de armazenamento e processamento.
+A técnica reduziu grandemente o espaço utilizado, comprimindo o arquivo em mais de 10 vezes, enquanto a acurácia sofreu um leve aumento, não o usual, de 0.9867 para 0.9873. Isso comprova a a importância e necessidade dessas otimizações para permitir que esses modelos rodem de forma eficiente em dispositivos carentes de armazenamento e processamento.
 
 ### 6️⃣ Exemplo de Inferência
 
