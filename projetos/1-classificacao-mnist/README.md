@@ -103,14 +103,14 @@ Foi utilizada a técnica 'Dynamic Range Quantization', que converte os pesos do 
 
 Informe a acurácia de validação obtida e o tamanho dos arquivos `model.h5` e `model.tflite`.
 
-Para o model.h5 a acurácia foi de aproximadamente 0.9871, com o tamanho do arquivo de 1374KB
+Para o model.h5 a acurácia foi de aproximadamente 0.9867, com o tamanho do arquivo de 1378KB
 
-Para o modelo quantizado a acurácia foi de aproximadamente 0.9862, com o tamanho do arquivo de 123KB
+Para o modelo quantizado a acurácia foi de aproximadamente 0.9873, com o tamanho do arquivo de 122KB
 
 ### 5️⃣ Comentários Adicionais (Opcional)
 
 Observando os resultados obtidos, percebe-se a importância da quantização para dispositivos Edge.
-A técnica reduziu grandemente o espaço utilizado, comprimindo o arquivo em mais de 10 vezes, enquanto a acurácia sofreu uma redução leve, de 0.9871 para 0.9862. Isso comprova a a importância e necessidade dessas otimizações para permitir que esses modelos rodem de forma eficiente em dispositivos carentes de armazenamento e processamento.
+A técnica reduziu grandemente o espaço utilizado, comprimindo o arquivo em mais de 10 vezes, enquanto a acurácia sofreu um redução leve, de 0.9871 para 0.9862. Isso comprova a a importância e necessidade dessas otimizações para permitir que esses modelos rodem de forma eficiente em dispositivos carentes de armazenamento e processamento.
 
 ### 6️⃣ Exemplo de Inferência
 

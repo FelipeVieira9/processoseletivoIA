@@ -1,6 +1,6 @@
-import tensorflow as tf
 import os
-
+os.environ['TF_USE_LEGACY_KERAS'] = '1'
+import tensorflow as tf
 # ---------------------------------------------------------------------------
 # Projeto 1 — Otimização do Modelo (MNIST)
 #
@@ -13,7 +13,6 @@ import os
 # ---------------------------------------------------------------------------
 
 # insira seu código aqui
-
 #   1. Carregar o modelo treinado em "model.h5" <---------------------
 model = tf.keras.models.load_model('model.h5')
 # model = tf.keras.models.load_model('model.h5')

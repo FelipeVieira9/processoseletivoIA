@@ -1,3 +1,5 @@
+import os
+os.environ['TF_USE_LEGACY_KERAS'] = '1'
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
@@ -19,7 +21,7 @@ from tensorflow.keras import layers
 # insira seu código aqui
 
 #  1. Carregar o dataset MNIST via tf.keras.datasets.mnist <--------------------------------
-from keras.datasets import mnist
+from tensorflow.keras.datasets import mnist
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
 #   3. Separar um conjunto de validação (ex: validation_split ou split manual) <--------------------------------
@@ -41,8 +43,8 @@ input_shape = (28, 28, 1)
 #   4. Construir uma CNN com 3-4 blocos Conv2D + BatchNormalization + MaxPooling2D,
 #      seguida de Dropout antes da camada de saída (10 classes, softmax) <--------------------------------
 
-from keras.models import Sequential
-from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization
 
 model = Sequential([
     # Bloco Convolucional 1
@@ -81,7 +83,7 @@ model = Sequential([
 model.summary()
 
 #   5. Treinar com EarlyStopping monitorando a perda de validação <--------------------------------
-from keras.callbacks import EarlyStopping
+from tensorflow.keras.callbacks import EarlyStopping
 # Compilando o modelo
 model.compile(
     optimizer='adam', 
