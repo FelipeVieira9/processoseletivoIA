@@ -91,6 +91,8 @@ projetos/1-classificacao-mnist/
 
 A arquitetura da CNN foi construída utilizando 3 blocos convolucionais, onde cada bloco é composto por convolução, BatchNormalization para estabilização do aprendizado, e MaxPooling2D para redução de dimensionalidade. Antes da camada de saída temos uma camada de Dropout como técnica para evitar overfitting. A estratégia de validação utilizada foi o early stopping, que aguarda algumas épocas sem melhora do algoritmo para interromper a busca de melhores parâmetros.
 
+Foram utilizados hiperparâmetros como o Dropout(0.5), para desativar 50% dos neurônios durante o treino, o que força a rede a aprender características mais generalistas do dataset
+
 ### 2️⃣ Bibliotecas Utilizadas
 
 Foram utilizadas as bibliotecas recomendadas do projeto, que foram o tensorflow (v2.12), para mexer com CNN, numpy, para manipulação de arrays. Também foi utilizado scikit-learn, para fazer a divisão dos dados, criando o conjunto de validação.
@@ -111,6 +113,10 @@ Para o modelo quantizado a acurácia foi de aproximadamente 0.9873, com o tamanh
 
 Observando os resultados obtidos, percebe-se a importância da quantização para dispositivos Edge.
 A técnica reduziu grandemente o espaço utilizado, comprimindo o arquivo em mais de 10 vezes, enquanto a acurácia sofreu um leve aumento, não o usual, de 0.9867 para 0.9873. Isso comprova a a importância e necessidade dessas otimizações para permitir que esses modelos rodem de forma eficiente em dispositivos carentes de armazenamento e processamento.
+
+Em relação a dificuldades no desenvolvimento desse projeto, tive um problema técnico significativo que foi o gerenciamento de compatibilidade entre o ambiente local de treinamento e o Action de avaliação automatica do GitHub. Como o TensorFlow adotou o Keras 3 como padrão nas versões mais recentes, o arquivo .h5 gerado localmente passou a adotar uma estrutura incompatível com ambientes que ainda dependem do motor do Keras 2.
+
+Para contornar essa limitação precisei colocar a variável de ambiente os.environ['TF_USE_LEGACY_KERAS'] = '1' diretamente no topo dos códigos, isolando a execução local. Isso forçou o TensorFlow a salvar os pesos e a arquitetura no formato legado. Esse desafio foi uma alusão a uma realidade na área de Edge IA e embarcados, que é o esforço para garantir que um modelo treinano em um ambiente moderno seja suportado no dispositivo final.
 
 ### 6️⃣ Exemplo de Inferência
 
